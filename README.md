@@ -6,7 +6,7 @@ The solution is split into two repositories-
 1. [WasmEdge-FFMPEG](https://github.com/Hrushi20/WasmEdge-FFMPEG) 
 <br> Contains Ffmpeg Plugin that acts as a bridge between WasmEdge and Ffmpeg C API.
 
-2. [ffmpeg-rust](https://github.com/Hrushi20/ffmpeg-rust)<br> Uses the WasmEdgeFfmpeg plugin to execute Ffmpeg C API functions.
+2. [ffmpeg-rust](https://github.com/Hrushi20/ffmpeg-rust)<br> Uses the WasmEdgeFfmpeg plugin built in `WasmEdge-FFMPEG` and executes Ffmpeg C API functions.
 
 The Ffmpeg plugin is compiled into a shared library and can then be used in wasmedge runtime.
 
