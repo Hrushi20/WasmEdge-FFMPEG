@@ -64,6 +64,13 @@ Check if `libwasmedgePluginWasmEdgeFfmpeg.so` (.dylib in MacOs) file is created 
 ### 4. Testing the Plugin
 To test the plugin, follow the steps in [ffmpeg-rust](https://github.com/Hrushi20/ffmpeg-rust) repository.
 
-### Previous Work at WasmEdge
+## Previous Work at WasmEdge
 Created a POC to read Binlogs from MySql and Forward the logs to Kafka using WasmEdge <br>
 [wasmedge-mysql-binlog-kafka](https://github.com/Hrushi20/wasmedge-mysql-binlog-kafka.git)
+
+## Contact Me
+Feel free to contact me-
+
+- [LinkedIn](https://www.linkedin.com/in/hrushikesh-rao-7741311b0/)
+- [Twitter](https://twitter.com/Hrushi2020)
+- [Gmail](mailto:hrushikesh20thegreat@gmail.com)
