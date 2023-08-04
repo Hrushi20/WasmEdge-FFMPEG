@@ -97,3 +97,19 @@ node_modules/
 
 # generated jni files
 bindings/java/wasmedge-java/wasmedge-jni/jni/*.h
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+/include/api/wasmedge
+/include/common
+/plugins/test
+CPackConfig.cmake
+CPackSourceConfig.cmake

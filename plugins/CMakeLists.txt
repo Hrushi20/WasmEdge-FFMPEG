@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: 2019-2022 Second State INC
 
+# For test purpose, adding it by default
+add_subdirectory(wasmedge_ffmpeg)
 if(WASMEDGE_PLUGIN_WASI_NN_BACKEND)
   add_subdirectory(wasi_nn)
 endif()
