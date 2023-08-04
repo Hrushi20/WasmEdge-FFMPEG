@@ -38,3 +38,5 @@ else()
     avformat
   )
 endif()
+
+install(TARGETS wasmedgePluginWasmEdgeFfmpeg DESTINATION ${CMAKE_INSTALL_LIBDIR}/wasmedge)

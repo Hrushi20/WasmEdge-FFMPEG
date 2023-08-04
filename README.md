@@ -58,7 +58,7 @@ cmake --build build
 ```
 The above command compiles and builds WasmEdge with the FFMPEG plugin. 
 
-Check if `libwasmedgePluginWasmEdgeFfmpeg.so` (.dylib in MacOs) file is created at <br> `<path-to-WasmEdge-FFMPEG>/build/plugins/wasmedge_ffmpeg`. 
+Check if `libwasmedgePluginWasmEdgeFfmpeg.so` (.dylib in MacOs) file is created at <br> `/usr/local/lib/wasmedge`. 
 <br>If present, it means the plugin has been built successfully.
 
 ### 4. Testing the Plugin
