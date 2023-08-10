@@ -3,6 +3,7 @@
 #include "plugin/plugin.h"
 extern "C" {
     #include "libavformat/avformat.h"
+    #include "libavcodec/avcodec.h"
 }
 
 namespace WasmEdge {
@@ -12,16 +13,18 @@ class WasmEdgeFfmpegEnvironmet {
 public:
     WasmEdgeFfmpegEnvironmet() noexcept;
 
-    AVFormatContext* ctx;
+    std::vector<AVFormatContext*> avFormatContextArr;
+    std::vector<AVCodecParameters* > avCodecParameters;
+    std::vector<const AVCodec* > avCodec;
+    std::vector<AVCodecContext* >codecCtx;
+    std::vector<AVPacket* > packet;
+    std::vector<AVFrame* > frame;
+
     static Plugin::PluginRegister Register;
 
     // void setCtx(AVFormatContext** avFormatContext){
     //     ctx = *avFormatContext;
     // }
-
-    AVFormatContext* getCtx(){
-        return ctx;
-    }
 
 };
 } // namespace Host

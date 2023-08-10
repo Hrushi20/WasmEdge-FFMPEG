@@ -23,7 +23,8 @@ target_include_directories(wasmedgePluginWasmEdgeFfmpeg
   PUBLIC
   $<TARGET_PROPERTY:wasmedgePlugin,INCLUDE_DIRECTORIES>
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${FFMPEG_INCLUDE}
+  "/usr/local/include"
+  # ${FFMPEG_INCLUDE}
 )
 
 if(WASMEDGE_LINK_PLUGINS_STATIC)
@@ -36,6 +37,8 @@ else()
     PRIVATE
     wasmedge_shared
     avformat
+    avcodec
+    swscale
   )
 endif()
 
