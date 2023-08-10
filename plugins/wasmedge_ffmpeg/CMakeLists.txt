@@ -36,6 +36,7 @@ else()
     PRIVATE
     wasmedge_shared
     avformat
+    avcodec
   )
 endif()
 
