@@ -65,6 +65,18 @@ WasmEdgeFfmpegModule::WasmEdgeFfmpegModule()
 
     addHostFunc("wasmedge_ffmpeg_frameDimensions",
               std::make_unique<WasmEdgeFfmpegFrameDimension>(Env));
+
+    addHostFunc("wasmedge_ffmpeg_avformatCloseInput",
+              std::make_unique<WasmEdgeFfmpegAvformatCloseInput>(Env));
+
+    addHostFunc("wasmedge_ffmpeg_avPacketFree",
+              std::make_unique<WasmEdgeFfmpegAvPacketFree>(Env));
+
+    addHostFunc("wasmedge_ffmpeg_avFrameFree",
+              std::make_unique<WasmEdgeFfmpegAvFrameFree>(Env));
+
+    addHostFunc("wasmedge_ffmpeg_avcodecFreeContext",
+              std::make_unique<WasmEdgeFfmpegAvcodecFreeContext>(Env));
 }
 
 } // namespace Host

@@ -143,6 +143,37 @@ namespace Host {
     Expect<uint32_t> body(const Runtime::CallingFrame &Frame,uint32_t frame,uint32_t data,uint32_t dataSize);
     };
 
+    class WasmEdgeFfmpegAvformatCloseInput
+        : public WasmEdgeFfmpeg<WasmEdgeFfmpegAvformatCloseInput> {
+    public:
+    WasmEdgeFfmpegAvformatCloseInput(WasmEdgeFfmpegEnvironmet &HostEnv)
+        : WasmEdgeFfmpeg(HostEnv) {}
+    Expect<uint32_t> body(const Runtime::CallingFrame &Frame,uint32_t avFormatId);
+    };
+
+    class WasmEdgeFfmpegAvPacketFree
+        : public WasmEdgeFfmpeg<WasmEdgeFfmpegAvPacketFree> {
+    public:
+    WasmEdgeFfmpegAvPacketFree(WasmEdgeFfmpegEnvironmet &HostEnv)
+        : WasmEdgeFfmpeg(HostEnv) {}
+    Expect<uint32_t> body(const Runtime::CallingFrame &Frame,uint32_t avPacketId);
+    };
+
+    class WasmEdgeFfmpegAvFrameFree
+        : public WasmEdgeFfmpeg<WasmEdgeFfmpegAvFrameFree> {
+    public:
+    WasmEdgeFfmpegAvFrameFree(WasmEdgeFfmpegEnvironmet &HostEnv)
+        : WasmEdgeFfmpeg(HostEnv) {}
+    Expect<uint32_t> body(const Runtime::CallingFrame &Frame,uint32_t avFrameId);
+    };
+
+    class WasmEdgeFfmpegAvcodecFreeContext
+        : public WasmEdgeFfmpeg<WasmEdgeFfmpegAvcodecFreeContext> {
+    public:
+    WasmEdgeFfmpegAvcodecFreeContext(WasmEdgeFfmpegEnvironmet &HostEnv)
+        : WasmEdgeFfmpeg(HostEnv) {}
+    Expect<uint32_t> body(const Runtime::CallingFrame &Frame,uint32_t avFrameId);
+    };
 
 } // Host   
 } // WasmEdge 

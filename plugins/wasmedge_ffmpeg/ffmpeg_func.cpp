@@ -246,24 +246,62 @@ Expect<uint32_t> WasmEdgeFfmpegFrameDimension::body(const Runtime::CallingFrame 
     // uint32_t* dimensionPtr =  MemInst-<uint32_t *>(dimensions);
     uint32_t* dataSizePtr =  MemInst->getPointer<uint32_t *>(size);
 
-
     AVFrame* f = Env.frame.at(*framePtr);
 
     // First is size of row, 2nd is no.of columns, 3rd is no.of rows.
     int dim[] = {f->linesize[0],f->width,f->height};
-    // char* dim_arr = reinterpret_cast<char*>(dim);
-
     auto dimemsionPtr = MemInst->getSpan<int>(dimensions,3);
 
     memmove(dimemsionPtr.data(),dim,3 * sizeof(int));
-    // std::copy_n(dim_arr,3,dimemsionPtr.data());
 
     if(dataSizePtr)
         return 0;
 
     return 100;
 }
+Expect<uint32_t> WasmEdgeFfmpegAvformatCloseInput::body(const Runtime::CallingFrame &Frame,uint32_t avFormatId){
 
+    auto MemInst = Frame.getMemoryByIndex(0);
+    uint32_t* avFormatPtr =  MemInst->getPointer<uint32_t *>(avFormatId);
+
+    AVFormatContext* avFormatCtx = Env.avFormatContextArr.at(*avFormatPtr);
+    Env.avFormatContextArr.erase(Env.avFormatContextArr.begin() + *avFormatPtr);
+    avformat_free_context(avFormatCtx);
+    return 0;
+}
+
+Expect<uint32_t> WasmEdgeFfmpegAvPacketFree::body(const Runtime::CallingFrame &Frame,uint32_t packetId){
+
+    auto MemInst = Frame.getMemoryByIndex(0);
+    uint32_t* packetPtr =  MemInst->getPointer<uint32_t *>(packetId);
+
+    AVPacket* packet = Env.packet.at(*packetPtr);
+    Env.packet.erase(Env.packet.begin() + *packetPtr);
+    av_packet_free(&packet);
+    return 0;
+}
+
+Expect<uint32_t> WasmEdgeFfmpegAvFrameFree::body(const Runtime::CallingFrame &Frame,uint32_t frameId){
+
+    auto MemInst = Frame.getMemoryByIndex(0);
+    uint32_t* framePtr =  MemInst->getPointer<uint32_t *>(frameId);
+
+    AVFrame* frame = Env.frame.at(*framePtr);
+    Env.frame.erase(Env.frame.begin() + *framePtr);
+    av_frame_free(&frame);
+    return 0;
+}
+
+Expect<uint32_t> WasmEdgeFfmpegAvcodecFreeContext::body(const Runtime::CallingFrame &Frame,uint32_t codecCtxId){
+
+    auto MemInst = Frame.getMemoryByIndex(0);
+    uint32_t* codecCtxPtr =  MemInst->getPointer<uint32_t *>(codecCtxId);
+
+    AVCodecContext* ctx = Env.codecCtx.at(*codecCtxPtr);
+    Env.avCodec.erase(Env.avCodec.begin() + *codecCtxPtr);
+    avcodec_free_context(&ctx);
+    return 0;
+}
 
 } // Host
 } // WasmEdge
